@@ -14,8 +14,8 @@ func init() {
 	app = &cli.App{
 		Name:    "screanswer",
 		Version: "v1.0.3",
-		Usage: "Capture a text on the screen, copy it to the clipboard" +
-			"answer it automatically using ChatGPT" +
+		Usage: "Capture a text on the screen, copy it to the clipboard, " +
+			"answer it automatically using ChatGPT, " +
 			"and read the output aloud in a system voice",
 		Commands: []*cli.Command{
 			&captureCommand,
