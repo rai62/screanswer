@@ -91,7 +91,7 @@ This will capture text on the screen and copy it to the clipboard.
 - To get an answer to text:
 
 ```sh
-screanswer answer "What is the capital of France?"
+screanswer answer 'What is the capital of France?'
 ```
 
 This will answer the specified text using ChatGPT and print the answer to the terminal.
@@ -99,7 +99,7 @@ This will answer the specified text using ChatGPT and print the answer to the te
 - To read text aloud:
 
 ```sh
-screanswer speak en-US "Hello, world!"
+screanswer speak en-US 'Hello, world!'
 ```
 
 This will read the specified text "Hello, world!" in English using a system voice.
