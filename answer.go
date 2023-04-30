@@ -31,7 +31,7 @@ var (
 				return errors.New("incorrect usage: not enough command line arguments")
 			}
 
-			answerClient := NewAnswerClient(ctx.Context, ctx.Bool(answerClipFlag.Name)) // TODO: confirm that any order works
+			answerClient := NewAnswerClient(ctx.Context, ctx.Bool(answerClipFlag.Name))
 
 			answerClient.Answer(ctx.Args().Get(0))
 
