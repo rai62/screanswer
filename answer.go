@@ -108,10 +108,10 @@ func (c *AnswerClient) answer(text string, speakQueue chan<- SpeakRequest) error
 
 		if speakQueue != nil {
 			switch character {
-			case ".":
+			case ".", "!", "?":
 				sentences = append(sentences, sentence...)
 				sendSpeakRequest(speakQueue, "en-US", &sentence)
-			case "。":
+			case "。", "！", "？":
 				sentences = append(sentences, sentence...)
 				sendSpeakRequest(speakQueue, "ja-JP", &sentence)
 			}
