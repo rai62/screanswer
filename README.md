@@ -3,6 +3,8 @@
 Screanswer is a command line tool designed to provide a convenient way of answering text on the screen for macOS users.
 It is an easy-to-use tool that can be used for a variety of purposes, such as searching sentences or terms, copying texts to the clipboard, and more.
 
+![screanswer](https://user-images.githubusercontent.com/83504221/236134459-532089b5-3e02-4a59-8ae4-044509163c95.gif)
+
 ## Features
 
 Screanswer is designed to be fast, efficient, and user-friendly. It includes the following features:
