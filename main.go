@@ -44,12 +44,12 @@ var app = &cli.App{
 		}
 		defer speakClient.client.Close()
 
-		var wg sync.WaitGroup
-		wg.Add(3)
-		go captureClient.CaptureWithQueue(&wg, answerQueue)
-		go answerClient.AnswerWithQueue(&wg, answerQueue, speakQueue)
-		go speakClient.SpeakWithQueue(&wg, speakQueue)
-		wg.Wait()
+			var wg sync.WaitGroup
+			wg.Add(3)
+			go captureClient.CaptureWithQueue(&wg, answerQueue)
+			go answerClient.AnswerWithQueues(&wg, answerQueue, speakQueue)
+			go speakClient.SpeakWithQueue(&wg, speakQueue)
+			wg.Wait()
 
 		return nil
 	},
