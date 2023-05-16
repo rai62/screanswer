@@ -31,7 +31,10 @@ var (
 				return errors.New("incorrect usage: not enough command line arguments")
 			}
 
-			answerClient := NewAnswerClient(ctx.Context, ctx.Bool(answerClipFlag.Name))
+			answerClient, err := NewAnswerClient(ctx.Context, ctx.Bool(answerClipFlag.Name))
+			if err != nil {
+				return err
+			}
 
 			answerClient.Answer(ctx.Args().Get(0))
 
@@ -48,12 +51,17 @@ type AnswerClient struct {
 }
 
 // NewAnswerClient creates a new AnswerClient.
-func NewAnswerClient(ctx context.Context, isClipped bool) *AnswerClient {
+func NewAnswerClient(ctx context.Context, isClipped bool) (*AnswerClient, error) {
+	apiKey := os.Getenv("CHATGPT_API_KEY")
+	if apiKey == "" {
+		return nil, errors.New("CHATGPT_API_KEY environment variable is not set")
+	}
+
 	return &AnswerClient{
-		client:    openai.NewClient(os.Getenv("CHATGPT_API_KEY")),
+		client:    openai.NewClient(apiKey),
 		ctx:       ctx,
 		isClipped: isClipped,
-	}
+	}, nil
 }
 
 // Answer answers a text using ChatGPT.

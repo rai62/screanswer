@@ -36,7 +36,10 @@ func init() {
 			}
 			defer captureClient.client.Close()
 
-			answerClient := NewAnswerClient(ctx.Context, ctx.Bool(answerClipFlag.Name))
+			answerClient, err := NewAnswerClient(ctx.Context, ctx.Bool(answerClipFlag.Name))
+			if err != nil {
+				return err
+			}
 
 			speakClient, err := NewSpeakClient(ctx.Context, 48000)
 			if err != nil {
