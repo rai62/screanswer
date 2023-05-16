@@ -71,8 +71,18 @@ func (c *AnswerClient) Answer(text string) {
 	}
 }
 
-// AnswerWithQueue answers a text from the answerQueue using ChatGPT and sends the answer to the speakQueue.
-func (c *AnswerClient) AnswerWithQueue(wg *sync.WaitGroup, answerQueue <-chan string, speakQueue chan<- SpeakRequest) {
+// AnswerWithAnswerQueue answers a text from the answerQueue using ChatGPT.
+func (c *AnswerClient) AnswerWithAnswerQueue(wg *sync.WaitGroup, answerQueue <-chan string) {
+	for text := range answerQueue {
+		if err := c.answer(text, nil); err != nil {
+			fmt.Fprintln(os.Stderr, err)
+		}
+	}
+	wg.Done()
+}
+
+// AnswerWithQueues answers a text from the answerQueue using ChatGPT and sends the answer to the speakQueue.
+func (c *AnswerClient) AnswerWithQueues(wg *sync.WaitGroup, answerQueue <-chan string, speakQueue chan<- SpeakRequest) {
 	for text := range answerQueue {
 		if err := c.answer(text, speakQueue); err != nil {
 			fmt.Fprintln(os.Stderr, err)
