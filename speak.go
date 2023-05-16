@@ -59,6 +59,10 @@ type SpeakRequest struct {
 
 // NewSpeakClient creates a new SpeakClient.
 func NewSpeakClient(ctx context.Context, samplingRate int32) (*SpeakClient, error) {
+	if os.Getenv("GOOGLE_APPLICATION_CREDENTIALS") == "" {
+		return nil, errors.New("GOOGLE_APPLICATION_CREDENTIALS environment variable is not set")
+	}
+
 	t2sClient, err := texttospeech.NewClient(ctx)
 	if err != nil {
 		return nil, fmt.Errorf("failed to initialize the Text-to-Speech client: %v", err)

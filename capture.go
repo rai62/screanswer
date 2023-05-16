@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"context"
+	"errors"
 	"fmt"
 	"os"
 	"sync"
@@ -37,6 +38,10 @@ type CaptureClient struct {
 
 // NewCaptureClient creates a new CaptureClient
 func NewCaptureClient(ctx context.Context) (*CaptureClient, error) {
+	if os.Getenv("GOOGLE_APPLICATION_CREDENTIALS") == "" {
+		return nil, errors.New("GOOGLE_APPLICATION_CREDENTIALS environment variable is not set")
+	}
+
 	if err := clipboard.Init(); err != nil {
 		return nil, fmt.Errorf("failed to initialize the clipboard: %v", err)
 	}
