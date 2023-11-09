@@ -6,7 +6,7 @@ require (
 	cloud.google.com/go/texttospeech v1.6.0
 	cloud.google.com/go/vision v1.2.0
 	github.com/hajimehoshi/go-mp3 v0.3.4
-	github.com/hajimehoshi/oto/v2 v2.4.0
+	github.com/hajimehoshi/oto/v2 v2.4.2
 	github.com/sashabaranov/go-openai v1.5.7
 	github.com/urfave/cli/v2 v2.25.1
 	golang.design/x/clipboard v0.7.0
@@ -19,7 +19,7 @@ require (
 	cloud.google.com/go/longrunning v0.4.1 // indirect
 	cloud.google.com/go/vision/v2 v2.7.0 // indirect
 	github.com/cpuguy83/go-md2man/v2 v2.0.2 // indirect
-	github.com/ebitengine/purego v0.3.0 // indirect
+	github.com/ebitengine/purego v0.4.1 // indirect
 	github.com/golang/groupcache v0.0.0-20200121045136-8c9f03a8e57e // indirect
 	github.com/golang/protobuf v1.5.3 // indirect
 	github.com/google/go-cmp v0.5.9 // indirect
