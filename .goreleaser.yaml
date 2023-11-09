@@ -28,7 +28,7 @@ changelog:
       - '^test:'
 brews:
   - name: screanswer
-    tap:
+    repository:
       owner: rai62
       name: homebrew-screanswer
     commit_author:
