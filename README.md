@@ -10,7 +10,7 @@ It is an easy-to-use tool that can be used for a variety of purposes, such as se
 Screanswer is designed to be fast, efficient, and user-friendly. It includes the following features:
 
 - Capturing text on the screen and copying it to the clipboard
-- Answering the text on the screen automatically using ChatGPT
+- Answering the text on the screen automatically using chat AI
 - Reading the output aloud in a system voice
 
 ## Installation
@@ -34,14 +34,14 @@ go install github.com/rai62/screanswer@latest
 
 ## Usage
 
-Before using Screanswer, you need to set up the following environment settings for ChatGPT and GCP.
+Before using Screanswer, you need to set up the following environment settings for OpenAI API and GCP.
 
-### Setting up ChatGPT API Key for Answering Text
+### Setting up OpenAI API Key for Answering Text
 
-To enable text answering functionality, register your [API key](https://platform.openai.com/account/api-keys) for ChatGPT in the environment variable `CHATGPT_API_KEY`.
+To enable text answering functionality, register your [API key](https://platform.openai.com/account/api-keys) for OpenAI API in the environment variable `OPENAI_API_KEY`.
 
 ```sh
-export CHATGPT_API_KEY=your_api_key
+export OPENAI_API_KEY=your_api_key
 ```
 
 ### Setting up GCP for Image-to-Text and Text-to-Speech
@@ -80,7 +80,7 @@ Here are some examples of how to use Screanswer:
 screanswer
 ```
 
-This will capture text on the screen, answer it using ChatGPT, and then read the answer aloud in a system voice.
+This will capture text on the screen, answer it using chat AI, and then read the answer aloud in a system voice.
 
 - To capture and copy text on the screen:
 
@@ -96,7 +96,7 @@ This will capture text on the screen and copy it to the clipboard.
 screanswer answer 'What is the capital of France?'
 ```
 
-This will answer the specified text using ChatGPT and print the answer to the terminal.
+This will answer the specified text using chat AI and print the answer to the terminal.
 
 - To read text aloud:
 

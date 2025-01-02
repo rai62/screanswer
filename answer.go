@@ -23,7 +23,7 @@ var (
 	answerCommand = cli.Command{
 		Name:      "answer",
 		Aliases:   []string{"a"},
-		Usage:     "Answer a text using ChatGPT",
+		Usage:     "Answer a text using chat AI",
 		ArgsUsage: "<text>",
 		Flags:     []cli.Flag{answerClipFlag},
 		Action: func(ctx *cli.Context) error {
@@ -43,7 +43,7 @@ var (
 	}
 )
 
-// AnswerClient is a client for answering a text using ChatGPT.
+// AnswerClient is a client for answering a text using chat AI.
 type AnswerClient struct {
 	client    *openai.Client
 	ctx       context.Context
@@ -52,9 +52,9 @@ type AnswerClient struct {
 
 // NewAnswerClient creates a new AnswerClient.
 func NewAnswerClient(ctx context.Context, isClipped bool) (*AnswerClient, error) {
-	apiKey := os.Getenv("CHATGPT_API_KEY")
+	apiKey := os.Getenv("OPENAI_API_KEY")
 	if apiKey == "" {
-		return nil, errors.New("CHATGPT_API_KEY environment variable is not set")
+		return nil, errors.New("OPENAI_API_KEY environment variable is not set")
 	}
 
 	return &AnswerClient{
@@ -64,14 +64,14 @@ func NewAnswerClient(ctx context.Context, isClipped bool) (*AnswerClient, error)
 	}, nil
 }
 
-// Answer answers a text using ChatGPT.
+// Answer answers a text using chat AI.
 func (c *AnswerClient) Answer(text string) {
 	if err := c.answer(text, nil); err != nil {
 		fmt.Fprintln(os.Stderr, err)
 	}
 }
 
-// AnswerWithAnswerQueue answers a text from the answerQueue using ChatGPT.
+// AnswerWithAnswerQueue answers a text from the answerQueue using chat AI.
 func (c *AnswerClient) AnswerWithAnswerQueue(wg *sync.WaitGroup, answerQueue <-chan string) {
 	for text := range answerQueue {
 		if err := c.answer(text, nil); err != nil {
@@ -81,7 +81,7 @@ func (c *AnswerClient) AnswerWithAnswerQueue(wg *sync.WaitGroup, answerQueue <-c
 	wg.Done()
 }
 
-// AnswerWithQueues answers a text from the answerQueue using ChatGPT and sends the answer to the speakQueue.
+// AnswerWithQueues answers a text from the answerQueue using chat AI and sends the answer to the speakQueue.
 func (c *AnswerClient) AnswerWithQueues(wg *sync.WaitGroup, answerQueue <-chan string, speakQueue chan<- SpeakRequest) {
 	for text := range answerQueue {
 		if err := c.answer(text, speakQueue); err != nil {
