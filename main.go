@@ -17,7 +17,7 @@ var (
 
 	app = &cli.App{
 		Name:    "screanswer",
-		Version: "v1.0.9",
+		Version: "v1.1.0",
 		Usage: "Capture a text on the screen, copy it to the clipboard, " +
 			"answer it automatically using chat AI, " +
 			"and read the output aloud in a system voice",
