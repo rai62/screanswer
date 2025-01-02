@@ -19,7 +19,7 @@ var (
 		Name:    "screanswer",
 		Version: "v1.0.9",
 		Usage: "Capture a text on the screen, copy it to the clipboard, " +
-			"answer it automatically using ChatGPT, " +
+			"answer it automatically using chat AI, " +
 			"and read the output aloud in a system voice",
 		Commands: []*cli.Command{
 			&captureCommand,
